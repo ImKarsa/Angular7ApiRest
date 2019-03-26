@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,6 +29,14 @@ public class Cliente implements Serializable {
     @Column(name="create_at")
     @Temporal(TemporalType.DATE)
     private Date createAt;
+
+    //Se ejecuta antes de persistir
+    // y asigna el valor de la fecha al crear el cliente
+    @PrePersist
+    public void PrePersist(){
+        createAt = new Date();
+    }
+
 
     /**
      * @return the id
