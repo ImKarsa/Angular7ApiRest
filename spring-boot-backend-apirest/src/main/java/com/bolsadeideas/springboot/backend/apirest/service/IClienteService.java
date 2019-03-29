@@ -1,12 +1,17 @@
 package com.bolsadeideas.springboot.backend.apirest.service;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 import com.bolsadeideas.springboot.backend.apirest.entity.Cliente;
 
+
+
 public interface IClienteService {
 
     public List<Cliente> findAll();
+
+    public Page<Cliente> findAll(Pageable pageable);
 
     public Cliente findById(Long id);
 
