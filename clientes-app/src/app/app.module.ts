@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import { DetalleComponent } from './clientes/detalle/detalle.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/clientes', pathMatch: 'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'clientes/page/:page', component: ClientesComponent},
   {path: 'clientes/form', component: FormComponent},
   {path: 'clientes/form/:id', component: FormComponent},
+  {path: 'clientes/ver/:id', component: DetalleComponent},
 ];
 
 
@@ -33,7 +35,8 @@ const routes: Routes = [
     DirectivaComponent,
     ClientesComponent,
     FormComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,

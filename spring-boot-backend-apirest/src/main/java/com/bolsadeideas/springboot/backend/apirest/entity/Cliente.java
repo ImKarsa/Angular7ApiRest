@@ -45,6 +45,8 @@ public class Cliente implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date createAt;
 
+    private String foto;
+
     //Se ejecuta antes de persistir
     // y asigna el valor de la fecha al crear el cliente
     /*
@@ -123,6 +125,20 @@ public class Cliente implements Serializable {
      */
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    /**
+     * @return the foto
+     */
+    public String getFoto() {
+        return foto;
+    }
+
+    /**
+     * @param foto the foto to set
+     */
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
     
     
