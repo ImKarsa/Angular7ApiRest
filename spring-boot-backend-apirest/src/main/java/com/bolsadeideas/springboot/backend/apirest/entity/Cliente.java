@@ -8,12 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
+//import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -39,17 +40,20 @@ public class Cliente implements Serializable {
     //@Column(nullable = false, unique = true)
     private String email;
     
+    @NotNull(message="El campo fecha no puede estar vacio")
     @Column(name="create_at")
     @Temporal(TemporalType.DATE)
     private Date createAt;
 
     //Se ejecuta antes de persistir
     // y asigna el valor de la fecha al crear el cliente
+    /*
+    Funcion que añade la fecha en el momento en que se crea un objeto de este tipo
     @PrePersist
     public void PrePersist(){
         createAt = new Date();
     }
-
+    */
 
     /**
      * @return the id
