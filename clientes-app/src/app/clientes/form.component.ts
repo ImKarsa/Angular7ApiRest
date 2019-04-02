@@ -3,6 +3,7 @@ import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
+import { Region } from './region';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +14,7 @@ export class FormComponent implements OnInit {
   private cliente: Cliente = new Cliente();
 // tslint:disable-next-line: no-inferrable-types
   private titulo: string = 'Crear Cliente';
+  private regiones: Region[];
   private errores: string[];
 
   constructor(private clienteService: ClienteService,
@@ -31,6 +33,9 @@ export class FormComponent implements OnInit {
         this.clienteService.getCliente(id).subscribe( (cliente) => this.cliente = cliente);
       }
     });
+
+    this.clienteService.getRegiones().subscribe(regiones =>
+      this.regiones = regiones);
   }
 
   create(): void {
@@ -60,4 +65,14 @@ export class FormComponent implements OnInit {
       }
       );
   }
+
+  compararRegiones(o1: Region, o2: Region) {
+
+    if (o1 === undefined && o2 === undefined) {
+      return true;
+    }
+    return o1 == null || o2 == null ? false : o1.id === o2.id;
+
+  }
+
 }

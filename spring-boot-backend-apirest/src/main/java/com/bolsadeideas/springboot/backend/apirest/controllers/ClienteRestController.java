@@ -8,10 +8,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.bolsadeideas.springboot.backend.apirest.entity.Cliente;
+import com.bolsadeideas.springboot.backend.apirest.entity.Region;
 import com.bolsadeideas.springboot.backend.apirest.service.IClienteService;
 import com.bolsadeideas.springboot.backend.apirest.service.IUploadFileService;
 
@@ -148,6 +147,7 @@ public class ClienteRestController {
             clienteActual.setEmail(cliente.getEmail());
             clienteActual.setNombre(cliente.getNombre());
             clienteActual.setCreateAt(cliente.getCreateAt());
+            clienteActual.setRegion(cliente.getRegion());
             clienteUpdated = clienteService.save(clienteActual);
 
         } catch (DataAccessException e) {
@@ -227,4 +227,9 @@ public class ClienteRestController {
         return new ResponseEntity<Resource>(recurso, cabecera, HttpStatus.OK);
     }
     
+
+    @GetMapping("/clientes/regiones")
+    public List<Region> listarRegiones() {
+        return clienteService.findAllRegiones();
+    }
 }
